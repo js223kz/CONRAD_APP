@@ -1,0 +1,74 @@
+<form name="finnedForm">
+  <!-- dropdown flow -->
+  <div class="row-wrapper">
+    <label for="skyline-flow" class="col-form-label">Tillopp:</label>
+      <select
+        id="finned-flow"
+        class="input-field form-control"
+        ng-model="finned.flow"
+        ng-options="flow for flow in finnedFlows">
+      </select>
+      <label for="finned-flow" class="input-unit">&#8451</label>
+  </div>
+
+  <!-- dropdown return -->
+  <div class="row-wrapper">
+    <label for="finned-return" class="col-form-label">Retur:</label>
+      <select
+        id="finned-return"
+        class="input-field form-control"
+        ng-model="finned.return"
+        ng-options="return for return in finnedReturns">
+      </select>
+      <label for="finned-return" class="input-unit">&#8451</label>
+  </div>
+
+  <!-- dropdown room -->
+  <div class="row-wrapper">
+    <label for="finned-room" class="col-form-label">Rum:</label>
+      <select
+        id="finned-room"
+        class="input-field form-control"
+        ng-model="finned.room"
+        ng-options="room for room in finnedRooms">
+      </select>
+      <label for="finned-room" class="input-unit">&#8451</label>
+  </div>
+
+  <!-- input effect -->
+  <div class="row-wrapper">
+    <label for="finned-effect" class="col-form-label">Effekt:</label>
+      <input type="number"
+      name="watt" id="finned-effect"
+      class="input-field form-control"
+      ng-model="finned.watt"
+      data-ng-min="200" data-ng-max="10000" required>
+      <label for="finned-effect" class="input-unit">W</label>
+    <div class="error" ng-messages="finnedForm.watt.$error" role="alert">
+      <div ng-message="required">Tomt fält</div>
+      <div ng-message="min">Min 200</div>
+      <div ng-message="max">Max 10000</div>
+    </div>
+  </div>
+
+  <!-- input length -->
+  <div class="row-wrapper">
+    <label for="finned-length" class="col-form-label">Längd:</label>
+      <input type="number"
+      name="length" id="finned-length"
+      class="input-field form-control"
+      ng-model="finned.length"
+      data-ng-min="400" data-ng-max="6000" required>
+      <label for="finned-length" class="input-unit">MM</label>
+    </label>
+    <div class="error" ng-messages="finnedForm.length.$error" role="alert">
+      <div ng-message="required">Tomt fält</div>
+      <div ng-message="min">Min 400</div>
+      <div ng-message="max">Max 6000</div>
+    </div>
+  </div>
+
+
+  <!-- submit form -->
+  <button type="submit" class="btn btn-primary" ng-click="">Beräkna</button>
+</form>

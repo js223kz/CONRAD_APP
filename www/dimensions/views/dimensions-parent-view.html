@@ -1,0 +1,29 @@
+<ion-view>
+  <ion-header-bar class="bar-subheader bar-dark">
+    <h2 class="title">Dimensioner</h2>
+  </ion-header-bar>
+
+  <ion-content>
+    <select
+      ng-model="selectedHeatSystem"
+      ng-change="dropDownChange(selectedHeatSystem)"
+      ng-options="system for system in heatSystems">
+    </select>
+
+    <!-- default view Proline form -->
+    <dimension-dir>
+      <div ng-show="errorMessage" class="alert alert-danger">
+          {{errorMessage}}
+      </div>
+
+    <!-- dropdown selected value
+    decides form view -->
+    <con-proline ng-if="selectedHeatSystem == heatSystems[0]"></con-proline>
+    <con-lline ng-if="selectedHeatSystem == heatSystems[1]"></con-lline>
+    <con-skyline ng-if="selectedHeatSystem == heatSystems[2]"></con-skyline>
+    <con-finned ng-if="selectedHeatSystem == heatSystems[3]"></con-finned>
+    <div ng-if="selectedHeatSystem == heatSystems[4]"></div>
+    <div ng-if="selectedHeatSystem == heatSystems[5]"></div>
+    </dimension-dir>
+  </ion-content>
+</ion-view>

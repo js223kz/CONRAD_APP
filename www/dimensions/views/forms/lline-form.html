@@ -1,0 +1,75 @@
+<form name="llineForm">
+  <!-- dropdown flow -->
+  <div class="row-wrapper">
+    <label for="lline-flow" class="col-form-label">Tillopp:</label>
+      <select
+        id="lline-flow"
+        class="input-field form-control"
+        ng-model="lline.flow"
+        ng-options="flow for flow in llineFlows">
+      </select>
+      <label for="lline-flow" class="input-unit">&#8451</label>
+
+  </div>
+
+  <!-- dropdown return -->
+  <div class="row-wrapper">
+    <label for="lline-return" class="col-form-label">Retur:</label>
+      <select
+        id="lline-return"
+        class="input-field form-control"
+        ng-model="lline.return"
+        ng-options="return for return in llineReturns">
+      </select>
+      <label for="lline-return" class="input-unit">&#8451</label>
+  </div>
+
+  <!-- dropdown room -->
+  <div class="row-wrapper">
+    <label for="lline-room" class="col-form-label">Rum:</label>
+      <select
+        id="lline-room"
+        class="input-field form-control"
+        ng-model="lline.room"
+        ng-options="room for room in llineRooms">
+      </select>
+      <label for="lline-room" class="input-unit">&#8451</label>
+  </div>
+
+  <!-- input effect -->
+  <div class="row-wrapper">
+    <label for="lline-effect" class="col-form-label">Effekt:</label>
+      <input type="number"
+      name="watt" id="lline-effect"
+      class="input-field form-control"
+      ng-model="lline.watt"
+      data-ng-min="200" data-ng-max="10000" required>
+      <label for="lline-effect" class="input-unit">W</label>
+    <div class="error" ng-messages="llineForm.watt.$error" role="alert">
+      <div ng-message="required">Tomt fält</div>
+      <div ng-message="min">Min 200</div>
+      <div ng-message="max">Max 10000</div>
+    </div>
+  </div>
+
+  <!-- input length -->
+  <div class="row-wrapper">
+    <label for="lline-length" class="col-form-label">Längd:</label>
+      <input type="number"
+      name="length" id="lline-length"
+      class="input-field form-control"
+      ng-model="lline.length"
+      data-ng-min="400" data-ng-max="6000" required>
+      <label for="lline-length" class="input-unit">MM</label>
+    </label>
+    <div class="error" ng-messages="llineForm.length.$error" role="alert">
+      <div ng-message="required">Tomt fält</div>
+      <div ng-message="min">Min 400</div>
+      <div ng-message="max">Max 6000</div>
+    </div>
+  </div>
+
+
+  <!-- submit form -->
+  <button type="submit" class="btn btn-primary" ng-click="">Beräkna</button>
+</form>
