@@ -1,4 +1,5 @@
 
+
 <form name="prolineForm">
 
   <!-- input field inflow -->
@@ -31,6 +32,7 @@
       <div ng-message="min">Min 0</div>
       <div ng-message="max">Max 100</div>
     </div>
+    <div class="error" ng-show="prolineForm.return.$error.number" role="alert">Ogiltigt tal</div>
   </div>
 
   <!-- input room -->
@@ -48,6 +50,7 @@
       <div ng-message="min">Min 0</div>
       <div ng-message="max">Max 35</div>
     </div>
+    <div class="error" ng-show="prolineForm.room.$error.number" role="alert">Ogiltigt tal</div>
   </div>
 
   <!-- input effect -->
@@ -55,16 +58,17 @@
       <label for="proline-effect" class="col-form-label">Effekt:</label>
       <input type="number"
       class="input-field form-control"
-      name="watt" id="proline-effect"
-      ng-model="proline.watt"
+      name="effect" id="proline-effect"
+      ng-model="proline.effect"
       data-ng-min="200" data-ng-max="10000" required>
       <label for="proline-effect" class="input-unit">W</label>
 
-    <div class="error" ng-messages="prolineForm.watt.$error" role="alert">
+    <div class="error" ng-messages="prolineForm.effect.$error" role="alert">
       <div ng-message="required">Tomt fält</div>
       <div ng-message="min">Min 200</div>
       <div ng-message="max">Max 10000</div>
     </div>
+    <div class="error" ng-show="prolineForm.watt.$error.number" role="alert">Ogiltigt tal</div>
   </div>
 
   <!-- input length -->
@@ -82,6 +86,7 @@
       <div ng-message="min">Min 400</div>
       <div ng-message="max">Max 6000</div>
     </div>
+    <div class="error" ng-show="prolineForm.length.$error.number" role="alert">Ogiltigt tal</div>
   </div>
 
   <!-- dropdown height -->
@@ -91,12 +96,11 @@
         class="input-field form-control"
         id="proline-height"
         ng-model="proline.height"
-        ng-change="dropDownChange(selectedHeatSystem)"
         ng-options="height for height in prolineHeights">
       </select>
       <label for="proline-height" class="input-unit">MM</label>
   </div>
 
   <!-- submit form -->
-  <button type="submit" class="btn btn-primary" ng-click="">Beräkna</button>
+  <button type="submit" class="btn btn-primary" ng-click="calculate(proline)">Beräkna</button>
 </form>

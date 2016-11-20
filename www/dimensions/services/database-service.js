@@ -11,7 +11,8 @@ angular.module('Conrad')
         cloneDB: cloneDB,
         openDB: openDB,
         error: error,
-        success: success
+        success: success,
+        queryDatabase: queryDatabase
       };
 
       function success(){
@@ -56,5 +57,9 @@ angular.module('Conrad')
               window.plugins.sqlDB.copy(databases[i], 0, success, error);
           }
         });
+      }
+
+      function queryDatabase(query){
+        console.log("database");
       }
 }

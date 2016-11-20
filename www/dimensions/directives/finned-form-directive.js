@@ -27,6 +27,9 @@
                 length : DimConst.FINNED_LENGTH,
               }
 
+              scope.calculateFinned = function(){
+                console.log(JSON.stringify(scope.finned));
+              }
             }
         }
      }

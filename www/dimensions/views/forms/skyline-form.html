@@ -50,6 +50,7 @@
       <div ng-message="min">Min 200</div>
       <div ng-message="max">Max 10000</div>
     </div>
+    <div class="error" ng-show="skylineForm.watt.$error.number" role="alert">Ogiltigt tal</div>
   </div>
 
   <!-- input length -->
@@ -61,15 +62,15 @@
       ng-model="skyline.length"
       data-ng-min="400" data-ng-max="6000" required>
       <label for="skyline-length" class="input-unit">MM</label>
-    </label>
     <div class="error" ng-messages="skylineForm.length.$error" role="alert">
       <div ng-message="required">Tomt fält</div>
       <div ng-message="min">Min 400</div>
       <div ng-message="max">Max 6000</div>
     </div>
+    <div class="error" ng-show="skylineForm.length.$error.number" role="alert">Ogiltigt tal</div>
   </div>
 
 
   <!-- submit form -->
-  <button type="submit" class="btn btn-primary" ng-click="">Beräkna</button>
+  <button type="submit" class="btn btn-primary" ng-click="calculateSkyline()">Beräkna</button>
 </form>

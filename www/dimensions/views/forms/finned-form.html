@@ -49,6 +49,7 @@
       <div ng-message="min">Min 200</div>
       <div ng-message="max">Max 10000</div>
     </div>
+    <div class="error" ng-show="finnedForm.watt.$error.number" role="alert">Ogiltigt tal</div>
   </div>
 
   <!-- input length -->
@@ -66,9 +67,10 @@
       <div ng-message="min">Min 400</div>
       <div ng-message="max">Max 6000</div>
     </div>
+    <div class="error" ng-show="finnedForm.length.$error.number" role="alert">Ogiltigt tal</div>
   </div>
 
 
   <!-- submit form -->
-  <button type="submit" class="btn btn-primary" ng-click="">Beräkna</button>
+  <button type="submit" class="btn btn-primary" ng-click="calculateFinned()">Beräkna</button>
 </form>

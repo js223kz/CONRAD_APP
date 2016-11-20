@@ -50,6 +50,22 @@
           FINNED_RETURNS: [30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80],
           FINNED_ROOMS: [20, 25],
           FINNED_EFFECT: 2000,
-          FINNED_LENGTH: 4500
+          FINNED_LENGTH: 4500,
+
+          //convector form default values
+          CON_FLOW: 75,
+          CON_RETURN: 65,
+          CON_ROOM: 20,
+          CON_EFFECT: 2000,
+          CON_LENGTH: 4500,
+          CON_HEIGHTS: [70, 140, 210, 280, 350, 420, 490, 560, 630, 700, 770, 840, 910, 980],
+
+          //vertical form default values
+          VERT_FLOWS: [90, 85, 80, 75, 70, 65, 60, 55, 50, 45, 40],
+          VERT_RETURNS: [80, 75, 70, 65, 60, 55, 50, 45, 40, 35, 30],
+          VERT_ROOM: 20,
+          VERT_EFFECT: 2000,
+          VERT_LENGTHS: [280, 350, 420, 490, 560, 630, 700, 770, 840, 910, 980],
+          VERT_HEIGHT: 1000
       });
 }());

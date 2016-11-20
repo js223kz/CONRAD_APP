@@ -27,6 +27,10 @@
                 length : DimConst.SKYLINE_LENGTH,
               }
 
+              scope.calculateSkyline = function(){
+                console.log(JSON.stringify(scope.skyline));
+              }
+
             }
         }
      }

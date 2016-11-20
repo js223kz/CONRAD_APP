@@ -4,26 +4,31 @@
   </ion-header-bar>
 
   <ion-content>
-    <select
-      ng-model="selectedHeatSystem"
-      ng-change="dropDownChange(selectedHeatSystem)"
-      ng-options="system for system in heatSystems">
-    </select>
 
     <!-- default view Proline form -->
     <dimension-dir>
       <div ng-show="errorMessage" class="alert alert-danger">
           {{errorMessage}}
       </div>
+      <div ng-if="!showTable">
+        <select
+          ng-model="selectedHeatSystem"
+          ng-change="dropDownChange(selectedHeatSystem)"
+          ng-options="system for system in heatSystems">
+        </select>
+      </div>
 
-    <!-- dropdown selected value
-    decides form view -->
-    <con-proline ng-if="selectedHeatSystem == heatSystems[0]"></con-proline>
-    <con-lline ng-if="selectedHeatSystem == heatSystems[1]"></con-lline>
-    <con-skyline ng-if="selectedHeatSystem == heatSystems[2]"></con-skyline>
-    <con-finned ng-if="selectedHeatSystem == heatSystems[3]"></con-finned>
-    <div ng-if="selectedHeatSystem == heatSystems[4]"></div>
-    <div ng-if="selectedHeatSystem == heatSystems[5]"></div>
+        <!-- dropdown selected value
+        decides form view -->
+        <con-proline ng-if="selectedHeatSystem == heatSystems[0] && !showTable"></con-proline>
+        <con-lline ng-if="selectedHeatSystem == heatSystems[1] && !showTable"></con-lline>
+        <con-skyline ng-if="selectedHeatSystem == heatSystems[2] && !showTable"></con-skyline>
+        <con-finned ng-if="selectedHeatSystem == heatSystems[3] && !showTable"></con-finned>
+        <con-convector ng-if="selectedHeatSystem == heatSystems[4] && !showTable"></con-convector>
+        <con-vertical ng-if="selectedHeatSystem == heatSystems[5] && !showTable"></con-vertical>
+
+
+      <con-table ng-if="showTable"></con-table>
     </dimension-dir>
   </ion-content>
 </ion-view>

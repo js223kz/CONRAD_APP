@@ -27,6 +27,10 @@
                 length : DimConst.LLINE_LENGTH,
               }
 
+              scope.calculateLline= function(){
+                console.log(JSON.stringify(scope.lline));
+              }
+
             }
         }
      }

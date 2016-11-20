@@ -11,7 +11,14 @@
           link: function(scope) {
             scope.heatSystems = DimConst.HEATSYSTEMS;
             scope.selectedHeatSystem = scope.heatSystems[0];
-            scope.errorMessage = null;
+            scope.showTable = false;
+
+            scope.calculate = function(system){
+              scope.showTable = true;
+              DbService.queryDatabase(system);
+              console.log(JSON.stringify(system));
+            }
+
         }
       }
     }
