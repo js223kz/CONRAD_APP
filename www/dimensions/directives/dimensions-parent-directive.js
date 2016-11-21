@@ -17,34 +17,42 @@
             scope.userInput = null;
             scope.tableArray = [];
 
+
+            scope.decimalAdjust = (type, value, exp)=> {
+              // If the exp is undefined or ze ro...
+              if (typeof exp === 'undefined' || +exp === 0) {
+                return Math[type](value);
+              }
+              value = +value;
+              exp = +exp;
+              // If the value is not a number or the exp is not an integer...
+              if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0)) {
+                return NaN;
+              }
+              // Shift
+              value = value.toString().split('e');
+              value = Math[type](+(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp)));
+              // Shift back
+              value = value.toString().split('e');
+              return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
+            }
+
             scope.calc = (wpm_nom, n_koef = 1, maxLen, minLen, height_fact = null)=>{
               let values = [];
-              values['watt1'] = null;
-              values['watt2'] = null;
-              values['length'] = null;
+              values['effect1'] = null;
+              values['effect2'] = null;
+              values['length1'] = null;
               let wpm = null;
-              console.log("KOEF: " + n_koef);
 
-/*$field[1] = 90;     //Watt?
-$field[2] = 75;     //Return?
-$field[3] = 25;     //Room?
-$field[4] = 125;    //Height?
-$field[5] = 2000;   //Output?
-$field[6] = 4500;   //Length?*/
-              let test = scope.userInput.flow - scope.userInput.return;
               if(wpm_nom){
-                console.log("division: " + test);
                 if(scope.userInput.flow - scope.userInput.return){
-                wpm = wpm_nom * Math.pow((scope.userInput.flow - scope.userInput.return) / (Math.log((scope.userInput.flow - scope.userInput.room) /
-                (scope.userInput.return - scope.userInput.room))) / ((75 - 65) / Math.log((75 - 20) / (65 - 20))), n_koef);
-                    console.log("WPM ensam: " + Math.floor(wpm));
+                wpm = Math.floor(wpm_nom * Math.pow((scope.userInput.flow - scope.userInput.return) / (Math.log((scope.userInput.flow - scope.userInput.room) /
+                (scope.userInput.return - scope.userInput.room))) / ((75 - 65) / Math.log((75 - 20) / (65 - 20))), n_koef));
                 }
               }
 
               if(wpm){
-                console.log("if wpm" + wpm);
                   if(!height_fact){
-
                       let inputHeight = scope.userInput.height;
                       if(inputHeight <= 100)
                           height_fact = 1;
@@ -57,19 +65,20 @@ $field[6] = 4500;   //Length?*/
                       else
                           height_fact = 1;
                   }
-                  console.log("Längd: " + scope.userInput.length);
-                  console.log("höjdfakt: " + height_fact);
-                  console.log("WPM: " + wpm);
-                  let w1 = Math.ceil((scope.userInput.length / 1000 ) * height_fact * wpm);
-                  let le = Math.round((scope.userInput.effect * height_fact) / wpm) * 1000;
-                  let w2 = Math.ceil((le / 1000 ) * height_fact * wpm);
+                  //calculate first length and round number to nearest 10
+                  let length_1 = ((scope.userInput.effect * height_fact) / wpm) * 1000;
+                  length_1 = scope.decimalAdjust('round',length_1, 1);
+                  let effect_1 = Math.ceil((length_1 / 1000 ) * height_fact * wpm);
+                  let effect_2 = Math.ceil((scope.userInput.length / 1000 ) * height_fact * wpm);
 
-                  values['watt1'] = w1;
 
-                  if(le < maxLen && le > minLen)
+
+                  values['effect2'] = effect_2;
+
+                  if(length_1 < maxLen && length_1 > minLen)
                   {
-                      values['length'] = le;
-                      values['watt2'] = w2;
+                      values['length1'] = length_1;
+                      values['effect1'] = effect_1;
                   }
               }
               return values;
@@ -86,12 +95,12 @@ $field[6] = 4500;   //Length?*/
               let values = scope.calc(row.wpm_nom, n_koef, row.max_length, row.min_length);
 
               let rowArray = [];
-              //rowArray['tubes'] = $this->addTubes($row->tubes);
-              rowArray[0] = row.artno;
-              rowArray[1] = values['length'];
-              rowArray[2] = values['watt2'];
-              rowArray[3] = scope.userInput.length;
-              rowArray[4] = values['watt1'];
+              rowArray[0] = row.tubes;
+              rowArray[1] = row.artno;
+              rowArray[2] = values['length1'];
+              rowArray[3] = values['effect1'];
+              rowArray[4] = scope.userInput.length;
+              rowArray[5] = values['effect2'];
 
               scope.addRow(rowArray);
             }
