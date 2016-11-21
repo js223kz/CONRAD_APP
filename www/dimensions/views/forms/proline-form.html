@@ -3,102 +3,103 @@
 <form name="prolineForm">
 
   <!-- input field inflow -->
-  <div class="row-wrapper">
-    <label for="proline-flow" class="col-form-label">Tillopp:</label>
-    <input type="number" class="input-field form-control"
+  <div class="row">
+    <label for="proline-flow" class="col col-20 col-form-label">Tillopp:</label>
+    <input type="number" class="input-field form-control col col-30"
     name="flow" id="proline-flow"
     ng-model="proline.flow"
     data-ng-min="0" data-ng-max="100"
     required>
-    <label for="proline-flow" class="input-unit">&#8451</label>
-    <div class="error" ng-messages="prolineForm.flow.$error" role="alert">
+    <label for="proline-flow" class="input-unit col col-20">&#8451</label>
+    <div class="error col col-30" ng-messages="prolineForm.flow.$error" role="alert">
       <div ng-message="required">Tomt fält</div>
       <div ng-message="min">Min 0</div>
       <div ng-message="max">Max 100</div>
     </div>
+    <div class="error col col-30" ng-show="prolineForm.return.$error.number" role="alert">Ogiltigt tal</div>
   </div>
 
   <!-- input field return -->
-  <div class="row-wrapper">
-    <label for="proline-return" class="col-form-label">Retur:</label>
-    <input type="number" class="input-field form-control"
+  <div class="row">
+    <label for="proline-return" class="col  col-20 col-form-label">Retur:</label>
+    <input type="number" class="input-field form-control col col-30"
     name="return" id="proline-return"
     ng-model="proline.return"
     data-ng-min="0" data-ng-max="100"
     required>
-    <label for="proline-flow" class="input-unit">&#8451</label>
-    <div class="error" ng-messages="prolineForm.return.$error" role="alert">
+    <label for="proline-flow" class="input-unit col col-20">&#8451</label>
+    <div class="error col col-30" ng-messages="prolineForm.return.$error" role="alert">
       <div ng-message="required">Tomt fält</div>
       <div ng-message="min">Min 0</div>
       <div ng-message="max">Max 100</div>
     </div>
-    <div class="error" ng-show="prolineForm.return.$error.number" role="alert">Ogiltigt tal</div>
+    <div class="error col col-30" ng-show="prolineForm.return.$error.number" role="alert">Ogiltigt tal</div>
   </div>
 
   <!-- input room -->
-  <div class="row-wrapper">
-    <label for="proline-room" class="col-form-label">Rum:</label>
+  <div class="row">
+    <label for="proline-room" class="col col-20 col-form-label">Rum:</label>
       <input type="number"
-      class="input-field form-control"
+      class="input-field form-control col col-30"
       name="room" id="proline-room"
       ng-model="proline.room"
       data-ng-min="0" data-ng-max="35" required>
-      <label for="proline-room" class="input-unit">&#8451</label>
+      <label for="proline-room" class="input-unit col col-20">&#8451</label>
 
-    <div class="error" ng-messages="prolineForm.room.$error" role="alert">
+    <div class="error col col-30" ng-messages="prolineForm.room.$error" role="alert">
       <div ng-message="required">Tomt fält</div>
       <div ng-message="min">Min 0</div>
       <div ng-message="max">Max 35</div>
     </div>
-    <div class="error" ng-show="prolineForm.room.$error.number" role="alert">Ogiltigt tal</div>
+    <div class="error col col-30" ng-show="prolineForm.room.$error.number" role="alert">Ogiltigt tal</div>
   </div>
 
   <!-- input effect -->
-  <div class="row-wrapper">
-      <label for="proline-effect" class="col-form-label">Effekt:</label>
+  <div class="row">
+      <label for="proline-effect" class="col col-20 col-form-label">Effekt:</label>
       <input type="number"
-      class="input-field form-control"
+      class="form-control col col-30 input-field"
       name="effect" id="proline-effect"
       ng-model="proline.effect"
       data-ng-min="200" data-ng-max="10000" required>
-      <label for="proline-effect" class="input-unit">W</label>
+      <label for="proline-effect" class="col col-20 input-unit">W</label>
 
-    <div class="error" ng-messages="prolineForm.effect.$error" role="alert">
+    <div class="error col col-30" ng-messages="prolineForm.effect.$error" role="alert">
       <div ng-message="required">Tomt fält</div>
       <div ng-message="min">Min 200</div>
       <div ng-message="max">Max 10000</div>
     </div>
-    <div class="error" ng-show="prolineForm.watt.$error.number" role="alert">Ogiltigt tal</div>
+    <div class="error col col-30" ng-show="prolineForm.watt.$error.number" role="alert">Ogiltigt tal</div>
   </div>
 
   <!-- input length -->
-  <div class="row-wrapper">
-    <label for="proline-length" class="col-form-label">Längd:</label>
+  <div class="row">
+    <label for="proline-length" class="col col-20 col-form-label">Längd:</label>
       <input type="number"
-      class="input-field form-control"
+      class="form-control col col-30 input-field"
       name="length" id="proline-length"
       ng-model="proline.length"
       data-ng-min="400" data-ng-max="6000" required>
-      <label for="proline-length" class="input-unit">MM</label>
+      <label for="proline-length" class="col col-20 input-unit">MM</label>
 
-    <div class="error" ng-messages="prolineForm.length.$error" role="alert">
+    <div class="error col col-30" ng-messages="prolineForm.length.$error" role="alert">
       <div ng-message="required">Tomt fält</div>
       <div ng-message="min">Min 400</div>
       <div ng-message="max">Max 6000</div>
     </div>
-    <div class="error" ng-show="prolineForm.length.$error.number" role="alert">Ogiltigt tal</div>
+    <div class="error col col-30" ng-show="prolineForm.length.$error.number" role="alert">Ogiltigt tal</div>
   </div>
 
   <!-- dropdown height -->
-  <div class="row-wrapper">
-    <label for="proline-height" class="col-form-label">Höjd:</label>
+  <div class="row">
+    <label for="proline-height" class="col col-20 col-form-label">Höjd:</label>
       <select
-        class="input-field form-control"
+        class="form-control col col-30 input-field"
         id="proline-height"
         ng-model="proline.height"
         ng-options="height for height in prolineHeights">
       </select>
-      <label for="proline-height" class="input-unit">MM</label>
+      <label for="proline-height" class="col col-50 input-unit">MM</label>
   </div>
 
   <!-- submit form -->

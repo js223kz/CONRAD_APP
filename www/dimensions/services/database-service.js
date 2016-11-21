@@ -34,23 +34,27 @@ angular.module('Conrad')
         });
       }
 
-      function openDB(dbName = DimConst.DATABASES[0]){
+      function openDB(dbName, table){
         return $q(function(resolve, reject) {
+          let data = [];
           db = window.sqlitePlugin.openDatabase({name: dbName, location: 0});
-          var query = "SELECT * FROM input_fields";
+          var query = "SELECT * FROM " + table;
           $cordovaSQLite.execute(db, query, []).then(function(res) {
-             if(res.rows.length > 0) {
-               console.log(JSON.stringify(res.rows.item(1)));
-               resolve("kan läsa");
+            if(res.rows.length > 0) {
+              for (var i = 0, max = res.rows.length; i < max; i++) {
+                data.push(res.rows.item(i))
+              }
+              resolve(data);
 
-             } else {
+            } else {
                 reject("inga rader");
-             }
+            }
           }, function (err) {
               reject("funkar inte");
           });
         });
       };
+
       function cloneDB(databases){
         return $q(function(resolve, reject) {
           for(var i=0; i<databases.length; i++){

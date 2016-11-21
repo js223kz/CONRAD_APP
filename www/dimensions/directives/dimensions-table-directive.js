@@ -10,7 +10,11 @@
           restrict: 'E',
           templateUrl: 'dimensions/views/forms/dimensions-table-view.html',
           link: function(scope) {
-        }
-      }
+            document.addEventListener("deviceready", onDeviceReady, false);
+              function onDeviceReady(){
+                  screen.lockOrientation('landscape');
+              }
+            }
+          }
     }
 })();

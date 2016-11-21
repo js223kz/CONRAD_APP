@@ -2,21 +2,17 @@
 .error{
   color: red;
 }
-.row-wrapper{
-  display: table;
-  text-align: center;
+.dimensions-table{
   width: 96%;
   margin-left: 2%;
   margin-right: 2%;
 }
 .col-form-label{
   width: 20%;
-  display: table-cell;
-  text-align: left;
+  margin-left: 2%;
 }
 .input-unit{
   width: 10%;
-  display: table-cell;
 }
 .input-field{
   width: 64%;
@@ -24,7 +20,4 @@
 
 .btn-calculate{
   margin-left: 2%;
-}
-.test{
-  border: 1px solid red;
 }

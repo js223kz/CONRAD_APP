@@ -21,6 +21,7 @@ angular.module('Conrad', ['ionic', 'ui.router', 'ngMessages', 'ngCordova'])
        DbService.cloneDB(DimConst.DATABASES);
 
     }
+  
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
