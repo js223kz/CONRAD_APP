@@ -10,8 +10,6 @@ angular.module('Conrad')
       return{
         cloneDB: cloneDB,
         openDB: openDB,
-        error: error,
-        success: success,
         queryDatabase: queryDatabase
       };
 
@@ -44,7 +42,7 @@ angular.module('Conrad')
               for (var i = 0, max = res.rows.length; i < max; i++) {
                 data.push(res.rows.item(i))
               }
-              resolve(data);
+                resolve(data);
 
             } else {
                 reject("inga rader");
@@ -57,7 +55,7 @@ angular.module('Conrad')
 
       function cloneDB(databases){
         return $q(function(resolve, reject) {
-          for(var i=0; i<databases.length; i++){
+          for(var i=0; i < databases.length; i++){
               window.plugins.sqlDB.copy(databases[i], 0, success, error);
           }
         });
