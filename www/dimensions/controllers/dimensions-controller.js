@@ -3,34 +3,18 @@
 (function(){
     angular.module('Conrad').controller('DimensionsCtrl', DimensionsCtrl)
 
-    DimensionsCtrl.$inject = ['$scope', 'DimConst', 'DbService', '$q']
+    DimensionsCtrl.$inject = ['$scope', 'FormConst', 'DbService', '$q', '$state']
 
-    function DimensionsCtrl($scope, DimConst, DbService, $q){
-      $scope.heatSystems = DimConst.HEATSYSTEMS;
+    function DimensionsCtrl($scope, FormConst, DbService, $q, $state){
+      $scope.heatSystems = FormConst.HEATSYSTEMS;
       $scope.selectedHeatSystem = $scope.heatSystems[0];
-      $scope.showTable = false;
-      $scope.articles = null;
-      $scope.userInput = null;
       $scope.error = null;
-      $scope.tableArray = [];
 
       $scope.errorMessage = (error)=>{
         $scope.error = error;
       }
-
-      $scope.showTableView = ()=>{
-        return $scope.showTable = true;
-      }
-
-      $scope.getTableRows = (input)=>{
-        return $q((resolve, reject)=> {
-          DbService.openDB(input.database, "article")
-          .then((data)=>{
-            resolve(data);
-          }).catch((error)=>{
-            reject(error);
-          });
-        });
+      $scope.calculateRows = (inputObject)=>{
+        $state.go('table', {obj:inputObject});
       }
      }
 })();

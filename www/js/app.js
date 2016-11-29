@@ -2,10 +2,9 @@
 var db = null;
 angular.module('Conrad', ['ionic', 'ui.router', 'ngMessages', 'ngCordova'])
 .run([  '$ionicPlatform',
-        '$cordovaSQLite',
         'DbService',
-        'DimConst',
-        function($ionicPlatform, $cordovaSQLite, DbService, DimConst) {
+        'FormConst',
+        function($ionicPlatform, DbService, FormConst) {
 
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
@@ -17,9 +16,7 @@ angular.module('Conrad', ['ionic', 'ui.router', 'ngMessages', 'ngCordova'])
       // from snapping when text inputs are focused. Ionic handles this internally for
       // a much nicer keyboard experience.
       cordova.plugins.Keyboard.disableScroll(true);
-
-       DbService.cloneDB(DimConst.DATABASES);
-
+      DbService.cloneDB(FormConst.DATABASES);
     }
 
     if(window.StatusBar) {
@@ -29,11 +26,17 @@ angular.module('Conrad', ['ionic', 'ui.router', 'ngMessages', 'ngCordova'])
 }])
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-      .state('index', {
+      .state('form', {
           url: '/',
-          templateUrl: 'dimensions/views/dimensions-main-view.html',
+          templateUrl: 'dimensions/views/form-view.html',
           controller: 'DimensionsCtrl'
+      })
+      .state('table', {
+          url: '/tabell',
+          templateUrl: 'dimensions/views/table-view.html',
+          params:{obj:null},
+          controller: 'TableCtrl'
       });
 
-  $urlRouterProvider.otherwise('/');
+      $urlRouterProvider.otherwise('/');
 });

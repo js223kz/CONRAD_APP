@@ -1,12 +1,10 @@
 "use strict";
 angular.module('Conrad')
-     .factory('DbService', ["DimConst",
-                            "$cordovaSQLite",
+     .factory('DbService', ["$cordovaSQLite",
                             "$q",
                             DbService]);
 
-    function DbService(DimConst, $cordovaSQLite, $q){
-      var self = this;
+    function DbService($cordovaSQLite, $q){
       return{
         cloneDB: cloneDB,
         openDB: openDB,
@@ -32,14 +30,14 @@ angular.module('Conrad')
         });
       }
 
-      function openDB(dbName, table){
+      function openDB(dbName, query){
         return $q(function(resolve, reject) {
           let data = [];
           db = window.sqlitePlugin.openDatabase({name: dbName, location: 0});
-          var query = "SELECT * FROM " + table;
           $cordovaSQLite.execute(db, query, []).then(function(res) {
             if(res.rows.length > 0) {
               for (var i = 0, max = res.rows.length; i < max; i++) {
+                console.log("databas: " + res.rows.item(i))
                 data.push(res.rows.item(i))
               }
                 resolve(data);

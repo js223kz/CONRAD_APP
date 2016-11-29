@@ -1,10 +1,8 @@
 "use strict";
 angular.module('Conrad')
-  .factory('CalcService', ["DimConst",
-                            "$q",
-                            CalcService]);
+  .factory('CalcService', [CalcService]);
 
-  function CalcService(DimConst, $q){
+  function CalcService(){
     var self = this;
     return{
       decimalAdjust: decimalAdjust,
@@ -39,10 +37,10 @@ angular.module('Conrad')
 
       if(obj.wpm_nom){
         if(obj.userInput.flow - obj.userInput.return){
-        wpm = Math.floor(obj.wpm_nom * Math.pow((obj.userInput.flow - obj.userInput.return) /
-        (Math.log((obj.userInput.flow - obj.userInput.room) /
-        (obj.userInput.return - obj.userInput.room))) /
-        ((75 - 65) / Math.log((75 - 20) / (65 - 20))), obj.n_koef));
+          wpm = Math.floor(obj.wpm_nom * Math.pow((obj.userInput.flow - obj.userInput.return) /
+          (Math.log((obj.userInput.flow - obj.userInput.room) /
+          (obj.userInput.return - obj.userInput.room))) /
+          ((75 - 65) / Math.log((75 - 20) / (65 - 20))), obj.n_koef));
         }
       }
 
@@ -60,6 +58,9 @@ angular.module('Conrad')
               else
                   obj.height_fact = 1;
           }
+          console.log(obj.userInput.effect);
+          console.log(obj.height_fact);
+          console.log("wpm: " + wpm);
           //calculate first length and round number to nearest 10
           let length_1 = ((obj.userInput.effect * obj.height_fact) / wpm) * 1000;
           length_1 = decimalAdjust('round',length_1, 1);
@@ -68,10 +69,10 @@ angular.module('Conrad')
 
           values['effect2'] = effect_2;
 
-          if(length_1 < obj.maxLen && length_1 > obj.minLen)
-          {
-              values['length1'] = length_1;
-              values['effect1'] = effect_1;
+
+          if(length_1 < obj.userInput.maxLen && length_1 > obj.userInput.minLen){
+            values['length1'] = length_1;
+            values['effect1'] = effect_1;
           }
       }
       return values;

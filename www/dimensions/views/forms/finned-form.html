@@ -1,66 +1,66 @@
 <form name="finnedForm">
   <!-- dropdown flow -->
-  <div class="row-wrapper">
-    <label for="skyline-flow" class="col-form-label">Tillopp:</label>
+  <div class="row">
+    <label for="skyline-flow" class="col col-20 col-form-label">Tillopp:</label>
       <select
         id="finned-flow"
-        class="input-field form-control"
+        class="form-control col col-30 input-field"
         ng-model="finned.flow"
         ng-options="flow for flow in finnedFlows">
       </select>
-      <label for="finned-flow" class="input-unit">&#8451</label>
+      <label for="finned-flow" class="col col-20 input-unit">&#8451</label>
   </div>
 
   <!-- dropdown return -->
-  <div class="row-wrapper">
-    <label for="finned-return" class="col-form-label">Retur:</label>
+  <div class="row">
+    <label for="finned-return" class="col col-20 col-form-label">Retur:</label>
       <select
         id="finned-return"
-        class="input-field form-control"
+        class="form-control col col-30 input-field"
         ng-model="finned.return"
         ng-options="return for return in finnedReturns">
       </select>
-      <label for="finned-return" class="input-unit">&#8451</label>
+      <label for="finned-return" class="col col-20 input-unit">&#8451</label>
   </div>
 
   <!-- dropdown room -->
-  <div class="row-wrapper">
-    <label for="finned-room" class="col-form-label">Rum:</label>
+  <div class="row">
+    <label for="finned-room" class="col col-20 col-form-label">Rum:</label>
       <select
         id="finned-room"
-        class="input-field form-control"
+        class="form-control col col-30 input-field"
         ng-model="finned.room"
         ng-options="room for room in finnedRooms">
       </select>
-      <label for="finned-room" class="input-unit">&#8451</label>
+      <label for="finned-room" class="col col-20 input-unit">&#8451</label>
   </div>
 
   <!-- input effect -->
-  <div class="row-wrapper">
-    <label for="finned-effect" class="col-form-label">Effekt:</label>
+  <div class="row">
+    <label for="finned-effect" class="col col-20 col-form-label">Effekt:</label>
       <input type="number"
-      name="watt" id="finned-effect"
-      class="input-field form-control"
-      ng-model="finned.watt"
+      name="effect" id="finned-effect"
+      class="form-control col col-30 input-field"
+      ng-model="finned.effect"
       data-ng-min="200" data-ng-max="10000" required>
-      <label for="finned-effect" class="input-unit">W</label>
-    <div class="error" ng-messages="finnedForm.watt.$error" role="alert">
+      <label for="finned-effect" class="col col-20 input-unit">W</label>
+    <div class="error" ng-messages="finnedForm.effect.$error" role="alert">
       <div ng-message="required">Tomt fält</div>
       <div ng-message="min">Min 200</div>
       <div ng-message="max">Max 10000</div>
     </div>
-    <div class="error" ng-show="finnedForm.watt.$error.number" role="alert">Ogiltigt tal</div>
+    <div class="error" ng-show="finnedForm.effect.$error.number" role="alert">Ogiltigt tal</div>
   </div>
 
   <!-- input length -->
-  <div class="row-wrapper">
-    <label for="finned-length" class="col-form-label">Längd:</label>
+  <div class="row">
+    <label for="finned-length" class="col col-20 col-form-label">Längd:</label>
       <input type="number"
       name="length" id="finned-length"
-      class="input-field form-control"
+      class="form-control col col-30 input-field"
       ng-model="finned.length"
       data-ng-min="400" data-ng-max="6000" required>
-      <label for="finned-length" class="input-unit">MM</label>
+      <label for="finned-length" class="col col-20 input-unit">MM</label>
     </label>
     <div class="error" ng-messages="finnedForm.length.$error" role="alert">
       <div ng-message="required">Tomt fält</div>
@@ -72,5 +72,5 @@
 
 
   <!-- submit form -->
-  <button type="submit" class="btn btn-primary" ng-click="calculateFinned()">Beräkna</button>
+  <button type="submit" class="btn btn-primary" ng-click="calculateRows(finned)">Beräkna</button>
 </form>

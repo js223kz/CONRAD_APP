@@ -1,0 +1,26 @@
+
+<ion-view class="has-header">
+  <ion-content>
+      <!-- shared error message -->
+      <div ng-show="error" class="alert alert-danger">
+          {{error}}
+      </div>
+
+      <!-- heat system dropdown -->
+      <div>
+        <select
+          ng-model="selectedHeatSystem"
+          ng-options="system for system in heatSystems">
+        </select>
+      </div>
+
+      <!-- dropdown selected value
+      decides form view -->
+      <con-proline ng-if="selectedHeatSystem == heatSystems[0]"></con-proline>
+      <con-lline ng-if="selectedHeatSystem == heatSystems[1]"></con-lline>
+      <con-skyline ng-if="selectedHeatSystem == heatSystems[2]"></con-skyline>
+      <con-finned ng-if="selectedHeatSystem == heatSystems[3]"></con-finned>
+      <con-convector ng-if="selectedHeatSystem == heatSystems[4]"></con-convector>
+      <con-vertical ng-if="selectedHeatSystem == heatSystems[5]"></con-vertical>
+  </ion-content>
+</ion-view>

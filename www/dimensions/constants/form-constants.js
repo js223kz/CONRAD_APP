@@ -3,7 +3,7 @@
 (function(){
 
     angular.module('Conrad')
-        .constant('DimConst', {
+        .constant('FormConst', {
 
           DATABASES : [
             "Proline.sqlite",
@@ -12,6 +12,11 @@
             "Finned.sqlite",
             "Convectors.sqlite",
             "Vertical.sqlite"
+          ],
+
+          TABLES : [
+            "article",
+            "description"
           ],
 
           //dropdown values dimensions

@@ -1,20 +1,24 @@
 
-  <table class="dimensions-table">
-	<tr class="row">
-		<th class="col col-42">Bilder</th>
-		<th class="col col-18">Konvektortyp</th>
-		<th class="col col-10">Längd</th>
-    <th class="col col-10">Effekt</th>
-    <th class="col col-10">Längd</th>
-    <th class="col col-10">Effekt</th>
+<table class="dimensions-table">
+  <tr class="row">
+  	<th class="col column-1">Bilder</th>
+  	<th class="col column-2">Konvektortyp</th>
+  	<th class="col column-3">Längd</th>
+    <th class="col column-4">Effekt</th>
+    <th class="col column-5">Längd</th>
+    <th class="col column-6">Effekt</th>
+  </tr>
+  <tr class="row" ng-repeat="row in tableArray track by $index">
+    <td class="col column-1">
+      <div class="tubes" ng-repeat="tube in row[0] track by $index">
+        <img src="../img/black.png" ng-if="tube == '0' " class="tube_0"/>
+        <img src="../img/red.png" ng-if="tube == '1' " class="tube_1"/>
+      </div>
+    </td>
+		<td class="col column-2">{{row[1]}}</td>
+    <td class="col column-3">{{row[2]}}</td>
+    <td class="col column-4">{{row[3]}}</td>
+    <td class="col column-5">{{row[4]}}</td>
+    <td class="col column-6">{{row[5]}}</td>
 	</tr>
-    <tr class="row" ng-repeat="row in tableArray">
-  		<td class="col col-42">{{row[0]}}</td>
-  		<td class="col col-18">{{row[1]}}</td>
-      <td class="col col-10">{{row[2]}}</td>
-      <td class="col col-10">{{row[3]}}</td>
-      <td class="col col-10">{{row[4]}}</td>
-      <td class="col col-10">{{row[5]}}</td>
-  	</tr>
 </table>
-</div>

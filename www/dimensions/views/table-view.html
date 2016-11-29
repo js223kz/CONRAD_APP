@@ -1,0 +1,38 @@
+<ion-view class="has-header">
+  <ion-content>
+    <div>
+      <button class="btn btn-primary" ng-click="goBack()">Tillbaka</button>
+    </div>
+    <table class="dimensions-table">
+      <tr class="row">
+      	<th class="col column-1"></th>
+      	<th class="col column-2">Konvektortyp</th>
+      	<th class="col column-3">Längd</th>
+        <th class="col column-4">Effekt</th>
+        <th class="col column-5">Längd</th>
+        <th class="col column-6">Effekt</th>
+      </tr>
+      <tr class="row" ng-repeat="row in tableArray track by $index">
+        <td class="col column-1">
+          <div class="tubes" ng-repeat="tube in row[0] track by $index">
+            <div class="tube_{{tube}}"></div>
+          </div>
+        </td>
+    		<td class="col column-2">{{row[1]}}</td>
+        <td class="col column-3">{{row[2]}}</td>
+        <td class="col column-4">{{row[3]}}</td>
+        <td class="col column-5">{{row[4]}}</td>
+        <td class="col column-6">{{row[5]}}</td>
+    	</tr>
+    </table>
+    <table class="description-table">
+      <tr class="row" ng-repeat="desc in descriptionArray">
+        <td class="col col-10">
+          <div class="tube_{{desc.tube}}"></div>
+        </td>
+        <td class="col col-90">{{desc.desc}}</td>
+      </tr>
+    </table>
+
+  </ion-content>
+</ion-view>

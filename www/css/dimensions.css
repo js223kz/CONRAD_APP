@@ -2,11 +2,7 @@
 .error{
   color: red;
 }
-.dimensions-table{
-  width: 96%;
-  margin-left: 2%;
-  margin-right: 2%;
-}
+
 .col-form-label{
   width: 20%;
   margin-left: 2%;
@@ -17,7 +13,86 @@
 .input-field{
   width: 64%;
 }
-
 .btn-calculate{
   margin-left: 2%;
+}
+.dimensions-table{
+  width: 100%;
+  margin-left: 2%;
+  margin-right: 2%;
+  font-size: 35%;
+}
+.description-table{
+  width: 100%;
+  margin-left: 2%;
+  margin-right: 2%;
+  font-size: 70%;
+}
+.column-1{
+  max-width: 50%;
+  min-width: 50%;
+
+}
+.column-2{
+  max-width: 16%;
+  min-width: 16%;
+
+}
+.column-3{
+  max-width: 9%;
+  min-width: 9%;
+
+}
+.column-4{
+  max-width: 9%;
+  min-width: 9%;
+}
+.column-5{
+  max-width: 9%;
+  min-width: 9%;
+}
+.column-6{
+  max-width: 9%;
+  min-width: 9%;
+}
+.tubes{
+  float: left;
+  margin-right:1px;
+  height: auto;
+  width; 100%;
+}
+.tube_0{
+  height: 2px;
+  width: 4px;
+  background: url('../img/black.png');
+}
+.tube_1{
+  height: 9px;
+  width: 4px;
+  background: url('../img/red.png');
+
+}
+.tube_W{
+    background-color: #1c486f;
+}
+.tube_F{
+    background-color: #6c6c6c;
+}
+.tube_G{
+    background-color: #e0e0e0;
+}
+.tube_C{
+    background-image: url(gfx/G.png);
+    background-repeat: no-repeat;
+    background-color: #d30e14;
+}
+.tube_X{
+    background-image: url(gfx/G.png);
+    background-repeat: no-repeat;
+    background-color: #e0e0e0;
+}
+.tube_Z{
+  height: 3px;
+  width: 5px;
+  background: url('../img/black.png');
 }

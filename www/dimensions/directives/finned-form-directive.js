@@ -3,35 +3,39 @@
 (function(){
     angular.module('Conrad').directive('conFinned', conFinned)
 
-    conFinned.$inject = ['DimConst'];
+    conFinned.$inject = ['FormConst'];
 
-    function conFinned(DimConst){
+    function conFinned(FormConst){
         return{
-            restrict: 'E',
-            templateUrl: 'dimensions/views/forms/finned-form.html',
-            link: function(scope, elem, attrs){
-              scope.finnedFlows = DimConst.FINNED_FLOWS;
-              scope.selectedFlow = DimConst.FINNED_FLOWS[7];
+          restrict: 'E',
+          templateUrl: 'dimensions/views/forms/finned-form.html',
+          link: function(scope, elem, attrs){
+            scope.finnedFlows = FormConst.FINNED_FLOWS;
+            scope.selectedFlow = FormConst.FINNED_FLOWS[7];
 
-              scope.finnedReturns = DimConst.FINNED_RETURNS;
-              scope.selectedReturn = DimConst.FINNED_RETURNS[7]
+            scope.finnedReturns = FormConst.FINNED_RETURNS;
+            scope.selectedReturn = FormConst.FINNED_RETURNS[7]
 
-              scope.finnedRooms = DimConst.FINNED_ROOMS;
-              scope.selectedRoom = DimConst.FINNED_ROOMS[0];
+            scope.finnedRooms = FormConst.FINNED_ROOMS;
+            scope.selectedRoom = FormConst.FINNED_ROOMS[0];
 
-              scope.finned = {
-                flow : scope.selectedFlow,
-                return : scope.selectedReturn,
-                room : scope.selectedRoom,
-                watt : DimConst.FINNED_EFFECT,
-                length : DimConst.FINNED_LENGTH,
-              }
+            let column = 'c' + scope.selectedReturn;
+            let col = 'c' + scope.selectedReturn;
+            let whereT = 'WHERE name LIKE "' + scope.selectedFlow + scope.selectedRoom + '%"';
+            let query = 'SELECT name AS artno,' + column + ' AS wpm_nom, tubes FROM article ' + whereT;
 
-              scope.calculateFinned = function(){
-                console.log(JSON.stringify(scope.finned));
-              }
+            scope.finned = {
+              database: FormConst.DATABASES[3],
+              query: query,
+              flow : scope.selectedFlow,
+              return : scope.selectedReturn,
+              room : scope.selectedRoom,
+              effect : FormConst.FINNED_EFFECT,
+              length : FormConst.FINNED_LENGTH,
+              maxLen: 6000,
+              minLen: 400
             }
+          }
         }
      }
-
 })();

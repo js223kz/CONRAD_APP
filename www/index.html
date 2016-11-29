@@ -31,24 +31,23 @@
 </head>
 
   <body ng-app="Conrad">
-
-    <!-- header -->
-    <div class="bar bar-header">
-      <h1 class="title">Conrad Värme</h1>
-    </div>
-
-    <ion-nav-view></ion-nav-view>
+    <ion-nav-view>
+      <div class="bar bar-header">
+        <h1 class="title">Conrad Värme</h1>
+      </div>
+    </ion-nav-view>
 
     <script src="dimensions/controllers/dimensions-controller.js"></script>
+    <script src="dimensions/controllers/table-controller.js"></script>
     <script src="dimensions/services/database-service.js"></script>
     <script src="dimensions/services/calculation-service.js"></script>
-    <script src="dimensions/constants/dimensions-constants.js"></script>
+    <script src="dimensions/services/tablerow-service.js"></script>
+    <script src="dimensions/constants/form-constants.js"></script>
     <script src="dimensions/directives/proline-form-directive.js"></script>
     <script src="dimensions/directives/lline-form-directive.js"></script>
     <script src="dimensions/directives/skyline-form-directive.js"></script>
     <script src="dimensions/directives/finned-form-directive.js"></script>
     <script src="dimensions/directives/convector-form-directive.js"></script>
     <script src="dimensions/directives/vertical-form-directive.js"></script>
-    <script src="dimensions/directives/dimensions-table-directive.js"></script>
   </body>
 </html>
