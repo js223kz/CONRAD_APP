@@ -1,11 +1,14 @@
 <ion-view class="has-header">
-  <ion-content>
-    <div>
-      <button class="btn btn-primary" ng-click="goBack()">Tillbaka</button>
+  <ion-content id="calc-table">
+    <div class="no-print">
+      <button class="btn btn-primary no-print" ng-click="goBack()">Tillbaka</button>
+      <con-print></con-print>
+      <con-email></con-email>
     </div>
     <table class="dimensions-table">
       <tr class="row">
-      	<th class="col column-1"></th>
+      	<th class="col column-1">
+      	</th>
       	<th class="col column-2">Konvektortyp</th>
       	<th class="col column-3">Längd</th>
         <th class="col column-4">Effekt</th>

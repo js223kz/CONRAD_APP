@@ -37,7 +37,7 @@ angular.module('Conrad')
           $cordovaSQLite.execute(db, query, []).then(function(res) {
             if(res.rows.length > 0) {
               for (var i = 0, max = res.rows.length; i < max; i++) {
-                console.log("databas: " + res.rows.item(i))
+                console.log(res.rows.item(i));
                 data.push(res.rows.item(i))
               }
                 resolve(data);

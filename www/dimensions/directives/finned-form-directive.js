@@ -3,12 +3,13 @@
 (function(){
     angular.module('Conrad').directive('conFinned', conFinned)
 
-    conFinned.$inject = ['FormConst'];
+    conFinned.$inject = ['FormConst', '$timeout'];
 
-    function conFinned(FormConst){
+    function conFinned(FormConst, $timeout){
         return{
           restrict: 'E',
           templateUrl: 'dimensions/views/forms/finned-form.html',
+
           link: function(scope, elem, attrs){
             scope.finnedFlows = FormConst.FINNED_FLOWS;
             scope.selectedFlow = FormConst.FINNED_FLOWS[7];
@@ -20,9 +21,8 @@
             scope.selectedRoom = FormConst.FINNED_ROOMS[0];
 
             let column = 'c' + scope.selectedReturn;
-            let col = 'c' + scope.selectedReturn;
-            let whereT = 'WHERE name LIKE "' + scope.selectedFlow + scope.selectedRoom + '%"';
-            let query = 'SELECT name AS artno,' + column + ' AS wpm_nom, tubes FROM article ' + whereT;
+            let selection = 'WHERE name LIKE "' + scope.selectedFlow + scope.selectedRoom + '%"';
+            let query = 'SELECT name AS artno,' + column + ' AS wpm_nom, tubes FROM article ' + selection;
 
             scope.finned = {
               database: FormConst.DATABASES[3],
@@ -37,5 +37,6 @@
             }
           }
         }
-     }
+      }
+
 })();

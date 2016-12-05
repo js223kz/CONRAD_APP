@@ -1,38 +1,38 @@
 <form name="verticalForm">
 
   <!-- dropdown flow -->
-  <div class="row-wrapper">
-    <label for="lline-flow" class="col-form-label">Tillopp:</label>
+  <div class="row">
+    <label for="lline-flow" class="col col-20 col-form-label">Tillopp:</label>
       <select
         id="vertical-flow"
-        class="input-field form-control"
+        class="form-control col col-30 input-field"
         ng-model="vertical.flow"
         ng-options="flow for flow in verticalFlows">
       </select>
-      <label for="vertical-flow" class="input-unit">&#8451</label>
+      <label for="vertical-flow" class="col col-20 input-unit">&#8451</label>
   </div>
 
   <!-- dropdown return -->
-  <div class="row-wrapper">
-    <label for="vertical-return" class="col-form-label">Retur:</label>
+  <div class="row">
+    <label for="vertical-return" class="col col-20 col-form-label">Retur:</label>
       <select
         id="vertical-return"
-        class="input-field form-control"
+        class="form-control col col-30 input-field"
         ng-model="vertical.return"
         ng-options="return for return in verticalReturns">
       </select>
-      <label for="vertical-return" class="input-unit">&#8451</label>
+      <label for="vertical-return" class="col col-20 input-unit">&#8451</label>
   </div>
 
   <!-- input room -->
-  <div class="row-wrapper">
-    <label for="vertical-room" class="col-form-label">Rum:</label>
+  <div class="row">
+    <label for="vertical-room" class="col col-20 col-form-label">Rum:</label>
       <input type="number"
-      class="input-field form-control"
+      class="form-control col col-30 input-field"
       name="room" id="vertical-room"
       ng-model="vertical.room"
       data-ng-min="0" data-ng-max="35" required>
-      <label for="vertical-room" class="input-unit">&#8451</label>
+      <label for="vertical-room" class="col col-20 input-unit">&#8451</label>
 
     <div class="error" ng-messages="verticalForm.room.$error" role="alert">
       <div ng-message="required">Tomt fält</div>
@@ -43,42 +43,42 @@
   </div>
 
   <!-- dropdown length -->
-  <div class="row-wrapper">
-    <label for="vertical-length" class="col-form-label">Längd:</label>
+  <div class="row">
+    <label for="vertical-length" class="col col-20 col-form-label">Längd:</label>
       <select
-        class="input-field form-control"
+        class="form-control col col-30 input-field"
         id="vertical-length"
         ng-model="vertical.length"
         ng-options="length for length in verticalLengths">
       </select>
-      <label for="vertical-length" class="input-unit">MM</label>
+      <label for="vertical-length" class="col col-20 input-unit">MM</label>
   </div>
 
   <!-- input effect -->
-  <div class="row-wrapper">
-    <label for="vertical-effect" class="col-form-label">Effekt:</label>
+  <div class="row">
+    <label for="vertical-effect" class="col col-20 col-form-label">Effekt:</label>
       <input type="number"
-      name="watt" id="vertical-effect"
-      class="input-field form-control"
-      ng-model="vertical.watt"
+      name="effect" id="vertical-effect"
+      class="form-control col col-30 input-field"
+      ng-model="vertical.effect"
       data-ng-min="200" data-ng-max="10000" required>
-      <label for="vertical-effect" class="input-unit">W</label>
-    <div class="error" ng-messages="verticalForm.watt.$error" role="alert">
+      <label for="vertical-effect" class="col col-20 input-unit">W</label>
+    <div class="error" ng-messages="verticalForm.effect.$error" role="alert">
       <div ng-message="required">Tomt fält</div>
       <div ng-message="min">Min 200</div>
       <div ng-message="max">Max 10000</div>
     </div>
-    <div class="error" ng-show="verticalForm.watt.$error.number" role="alert">Ogiltigt tal</div>
+    <div class="error" ng-show="verticalForm.effect.$error.number" role="alert">Ogiltigt tal</div>
   </div>
 
   <!-- input heigth -->
-  <div class="row-wrapper">
-    <label for="vertical-height" class="col-form-label">Höjd:</label>
+  <div class="row">
+    <label for="vertical-height" class="col col-20 col-form-label">Höjd:</label>
       <input type="number"
       name="height" id="vertical-height"
-      class="input-field form-control"
+      class="form-control col col-30 input-field"
       ng-model="vertical.height">
-      <label for="vertical-height" class="input-unit">MM</label>
+      <label for="vertical-height" class="col col-20 input-unit">MM</label>
     <div class="error" ng-messages="verticalForm.height.$error" role="alert">
       <div ng-message="required">Tomt fält</div>
       <div class="error" ng-show="verticalForm.height.$error.number" role="alert">Ogiltigt tal</div>
@@ -86,5 +86,5 @@
   </div>
 
   <!-- submit form -->
-  <button type="submit" class="btn btn-primary" ng-click="calculateVertical()">Beräkna</button>
+  <button type="submit" class="btn btn-primary" ng-click="calculateRows(vertical)">Beräkna</button>
 </form>

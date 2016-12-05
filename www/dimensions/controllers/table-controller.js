@@ -3,9 +3,17 @@
 (function(){
     angular.module('Conrad').controller('TableCtrl', TableCtrl)
 
-    TableCtrl.$inject = ['$scope','DbService', 'TableService', 'FormConst', '$q', '$state', '$stateParams']
+    TableCtrl.$inject = [ '$scope',
+                          'DbService',
+                          'TableService',
+                          'FormConst',
+                          '$q',
+                          '$state',
+                          '$stateParams',
+                          '$ionicHistory'
+                        ]
 
-    function TableCtrl($scope, DbService, TableService, FormConst, $q, $state, $stateParams){
+    function TableCtrl($scope, DbService, TableService, FormConst, $q, $state, $stateParams, $ionicHistory){
       let inputObject = $stateParams.obj;
       let database = inputObject.database;
       let inputQuery = inputObject.query;
@@ -15,7 +23,13 @@
       $scope.error = null;
 
       $scope.errorMessage = (error)=>{
-        $scope.error = error;
+        return $scope.error = error;
+      }
+
+      $scope.myGoBack = ()=>{
+        $scope.tableArray = [];
+        $scope.descriptionArray = [];
+        $ionicHistory.goBack();
       }
 
       $scope.goBack = ()=>{
@@ -28,11 +42,13 @@
         rows.forEach((row)=>{
           $scope.descriptionArray.push(row);
         });
+        return;
       }
 
       $scope.setRows = (rows)=>{
         rows.forEach((row)=>{
             $scope.tableArray.push(TableService.setTableRow(row, inputObject));
+            console.log($scope.tableArray);
         });
 
         DbService.openDB(database, descQuery)

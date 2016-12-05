@@ -6,7 +6,8 @@ angular.module('Conrad')
     var self = this;
     return{
       decimalAdjust: decimalAdjust,
-      calculateRows: calculateRows
+      calculateRows: calculateRows,
+      calculateVerticalRows: calculateVerticalRows
     };
 
     function decimalAdjust(type, value, exp){
@@ -28,6 +29,52 @@ angular.module('Conrad')
       return +(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp));
     }
 
+    /*only calculates table rows vertical system*/
+    function calculateVerticalRows(obj){
+      let values = [];
+      values['height'] = null;
+      values['effect1'] = null;
+      values['effect2'] = null;
+      let wpm = null;
+
+      if(obj.userInput.height < 1000){
+        obj.userInput.height = 1000;
+      }
+
+      if(obj.userInput.height > 3200){
+        obj.userInput.height = 3200;
+      }
+
+      wpm = Math.round(Math.pow((((obj.userInput.flow - obj.userInput.return) /
+                      Math.log((obj.userInput.flow - obj.userInput.room) /
+                      (obj.userInput.return - obj.userInput.room))) / ((75 - 65) /
+                      Math.log((75 - 20) / (65 - 20)))), 1.21), 2);
+
+      values['height'] = Math.ceil(((obj.userInput.effect / obj.panel_fakt) /
+                        (obj.userInput.length / 70) - (35.83333 * wpm))
+                        / (5.83333 * wpm) * 100);
+
+      if(values['height'] < 1000){
+        values['height'] = 1000;
+      }
+
+      if(values['height'] > 3200){
+        values['height'] = 3200;
+      }
+      values['height'] = Math.ceil(values['height'] / 100) * 100;
+      values['effect1'] = Math.ceil(obj.panel_fakt *
+                          (35.83333 + (values['height'] / 100) * 5.83333 * wpm) *
+                          obj.userInput.length / 70);
+
+      values['effect2'] = Math.round(obj.panel_fakt * ((35.83333 * wpm) +
+                          (obj.userInput.length / 100) *
+                          (5.83333 * wpm)) * obj.userInput.length / 70);
+
+      return values;
+    }
+
+    /*calculate table rows for all systems
+    except Vertical*/
     function calculateRows(obj){
       let values = [];
       values['effect1'] = null;
@@ -58,9 +105,6 @@ angular.module('Conrad')
               else
                   obj.height_fact = 1;
           }
-          console.log(obj.userInput.effect);
-          console.log(obj.height_fact);
-          console.log("wpm: " + wpm);
           //calculate first length and round number to nearest 10
           let length_1 = ((obj.userInput.effect * obj.height_fact) / wpm) * 1000;
           length_1 = decimalAdjust('round',length_1, 1);

@@ -13,8 +13,9 @@
       $scope.errorMessage = (error)=>{
         $scope.error = error;
       }
+
       $scope.calculateRows = (inputObject)=>{
-        $state.go('table', {obj:inputObject});
+        $state.go('table', {obj:inputObject})
       }
      }
 })();
